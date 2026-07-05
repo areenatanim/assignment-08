@@ -1,5 +1,5 @@
 import Footer from '@/components/shared/Footer';
-import NavBar from '@/components/shared/NavLink.jsx/NavBar';
+import NavBar from '@/components/shared/NavLink/NavBar';
 import React from 'react';
 
 const MainLayOut = ({ children }) => {

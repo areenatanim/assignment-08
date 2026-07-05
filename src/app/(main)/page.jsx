@@ -1,4 +1,4 @@
-import Banner from '@/components/shared/Banner';
+import Banner from '@/components/shared/Banner/Banner';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 const HomePage = () => {
   return (
