@@ -1,8 +1,9 @@
+import Banner from '@/components/shared/Banner';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 const HomePage = () => {
   return (
     <div>
-      <h2>this is home page</h2>
+      <Banner></Banner>
       <SpeedInsights />
     </div>
   );
