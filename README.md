@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### QurbaniHat – Livestock Booking Platform
 
-## Getting Started
+### Live Link
+## varcel app --  https://assignment-08-brown-theta.vercel.app/
 
-First, run the development server:
+<p>A modern livestock marketplace where users can explore animals for Qurbani such as cows and goats. Users can view details and place a booking after authentication.
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1. 🔝 Navbar
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Navbar:**
+- Design the Navbar exactly like the description design
+-  **logo on the left side**
+-  **navigation links on the mede side** — links are: **Home**, **All-Animals**
+- **login and register button right**
+- The **active page link** 
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. 🎯 Banner
 
-## Learn More
+**Banner Section (Top of the Home page):**
+- Show a centered **title** and **subtitle**
+- Added a **button with an icon** 
+- Show **4 summary cards below the banner**, following the description design
 
-To learn more about Next.js, take a look at the following resources:
+---
+### 3. 👤 All Animals  Page — Layout
+- Sort by price
+- Animal cards with details button
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. 👤 All Animals Details Page — Layout
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Full details view
+- Booking form (name, email, phone, address)
+- Login required
+- Show success toast message
 
-## Deploy on Vercel
+**Authentication**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**User Login**
+- Show a Title for Login.  & Form with following fields 
+( Email , Password , Login button ) 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+**User Registration**
+
+- Show a Title for registration and a Form with following fields
+( Name , Email, Photo-url(link), Password & Register Button ) 
+
+
+
+
+
+
