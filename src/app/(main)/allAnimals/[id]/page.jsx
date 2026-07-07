@@ -19,7 +19,7 @@ const AnimalsDetails = async ({ params }) => {
                 <p className="text-xs text-gray-400">{animals.description}</p>
                 <h3 className="font-bold text-xl text-[#86EFAC]">৳{animals.price}</h3>
             </div>
-            <div className="card lg:card-side bg-base-100 shadow-sm">
+            <div className="card lg:card-side bg-base-100 shadow-sm flex ">
                 <div>
                     <figure>
                         <Image

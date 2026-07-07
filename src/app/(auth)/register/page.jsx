@@ -4,7 +4,7 @@ import Link from "next/link";
 
 
 
-const LoginPage = () => {
+const RegisterPage = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -16,7 +16,7 @@ const LoginPage = () => {
             email: userData.email,
             password: userData.password,
             rememberMe: true,
-            callbackURL: "/dashbored",
+            callbackURL: "/HomePage",
 
         });
         console.log("submit ", { data, error });
@@ -59,4 +59,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default RegisterPage;
