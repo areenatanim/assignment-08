@@ -25,8 +25,8 @@ const AnimalsDetails = async ({ params }) => {
                         <Image
                             src={animals.image}
                             alt="a animal pic"
-                            width={200}
-                            height={400}
+                            width={190}
+                            height={200}
                             className="rounded-xl mx-5"
                         ></Image>
 
