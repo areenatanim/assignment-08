@@ -1,7 +1,8 @@
-import animals from "@/public/qurbani.json";
+import qurbaniData from "@/data/qurbani.json"
+
+
 const Card = async () => {
-    const rest = await fetch(animals);
-    const data = await rest.json();
+    const data = await qurbaniData;
     const qurbani_tips = data.qurbani_tips;
     const top_breeds = data.top_breeds;
     console.log(qurbani_tips, top_breeds);
