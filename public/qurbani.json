@@ -1,0 +1,114 @@
+{
+    "qurbani_tips": [
+        {
+            "id": 1,
+            "icon": "🩺",
+            "title": "Check health certificate",
+            "description": "Always ask the seller for a valid health certificate issued by a registered vet before finalizing your booking.",
+            "category": "Health"
+        },
+        {
+            "id": 2,
+            "icon": "⚖️",
+            "title": "Know the minimum weight",
+            "description": "For goats and sheep, minimum weight should be 12 kg. Cows and bulls should be at least 150 kg to be valid for Qurbani.",
+            "category": "Requirement"
+        },
+        {
+            "id": 3,
+            "icon": "📸",
+            "title": "Request live photos or video",
+            "description": "Ask the seller for recent photos or a short video to verify the animal's actual condition before making any payment.",
+            "category": "Verification"
+        },
+        {
+            "id": 4,
+            "icon": "💰",
+            "title": "Pay deposit safely",
+            "description": "Always pay via bKash or bank transfer. Avoid paying the full amount in advance to an unknown seller you have not verified.",
+            "category": "Payment"
+        },
+        {
+            "id": 5,
+            "icon": "👥",
+            "title": "Consider group Qurbani",
+            "description": "One cow or camel can be shared among up to 7 people. Splitting the cost with family or neighbors is a practical and valid option.",
+            "category": "Planning"
+        },
+        {
+            "id": 6,
+            "icon": "🚚",
+            "title": "Arrange delivery early",
+            "description": "Book your delivery slot at least one week before Eid. Last-minute delivery requests often fail due to high demand in the city.",
+            "category": "Logistics"
+        }
+    ],
+    "top_breeds": [
+        {
+            "id": 1,
+            "emoji": "🐄",
+            "name": "Friesian",
+            "type": "Cow",
+            "origin": "Netherlands",
+            "avg_weight": "350–450 kg",
+            "avg_price": 160000,
+            "suitable_for": "Group Qurbani (7 shares)",
+            "note": "Premium meat quality, large build, most popular for group Qurbani in Bangladesh"
+        },
+        {
+            "id": 2,
+            "emoji": "🐄",
+            "name": "Shahibal",
+            "type": "Cow",
+            "origin": "Bangladesh",
+            "avg_weight": "180–280 kg",
+            "avg_price": 95000,
+            "suitable_for": "2–3 family shares",
+            "note": "Most common deshi breed, widely available across all districts"
+        },
+        {
+            "id": 3,
+            "emoji": "🐐",
+            "name": "Black Bengal",
+            "type": "Goat",
+            "origin": "Bangladesh",
+            "avg_weight": "20–35 kg",
+            "avg_price": 22000,
+            "suitable_for": "Individual Qurbani",
+            "note": "Most popular goat for individual Qurbani, naturally raised and disease resistant"
+        },
+        {
+            "id": 4,
+            "emoji": "🐐",
+            "name": "Jamnapari",
+            "type": "Goat",
+            "origin": "India",
+            "avg_weight": "40–60 kg",
+            "avg_price": 38000,
+            "suitable_for": "Individual Qurbani",
+            "note": "Large premium goat, excellent meat quality, ideal for families wanting a bigger animal"
+        },
+        {
+            "id": 5,
+            "emoji": "🐑",
+            "name": "Merino",
+            "type": "Sheep",
+            "origin": "Australia",
+            "avg_weight": "30–45 kg",
+            "avg_price": 20000,
+            "suitable_for": "Individual Qurbani",
+            "note": "Calm temperament, grass fed, preferred by families who choose sheep over goat"
+        },
+        {
+            "id": 6,
+            "emoji": "🐪",
+            "name": "Arabian",
+            "type": "Camel",
+            "origin": "Arabia",
+            "avg_weight": "400–600 kg",
+            "avg_price": 520000,
+            "suitable_for": "Group Qurbani (7 shares)",
+            "note": "Rare and premium, valid for 7 family shares, full documentation and health certificate required"
+        }
+    ]
+}

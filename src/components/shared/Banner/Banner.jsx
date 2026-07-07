@@ -12,6 +12,7 @@ const Banner = () => {
                         alt="a cow image"
                         width={400}
                         height={400}
+                        className="flex justify-center items-center"
                     >
 
                     </Image>
@@ -31,7 +32,7 @@ const Banner = () => {
 
                         </p>
                         <button className="btn bg-[#315648] border-0 text-[#86EFAC] ">
-                            <Link href={"/allAnimal"}>All Animals</Link>
+                            <Link href={"/allAnimals"}>All Animals</Link>
                         </button>
                     </div>
                 </div>

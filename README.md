@@ -49,7 +49,8 @@
 ( Name , Email, Photo-url(link), Password & Register Button ) 
 
 
-
+**npm package**
+- Animate.css, 
 
 
 

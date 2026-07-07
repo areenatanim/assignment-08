@@ -18,7 +18,7 @@ const NavBar = () => {
 
         <div>
 
-            <nav className={`sticky top-0 z-40 w-full     border-separator bg-background/70...`}
+            <nav className={`sticky top-0 z-40 shadow-xl w-full     border-separator bg-background/70...`}
             >
                 <header className="flex h-16 items-center justify-between px-6 w-11/12 mx-auto">
                     <div className="flex items-center gap-4">
