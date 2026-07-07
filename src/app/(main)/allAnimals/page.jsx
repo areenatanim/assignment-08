@@ -7,7 +7,7 @@ import CommonBanner from "@/components/shared/Banner/CommonBanner";
 const AllAnimalsPage = async () => {
     const rest = await fetch("https://assignment-08-brown-theta.vercel.app/data.json");
     const data = await rest.json();
-    console.log(data);
+    // console.log(data);
 
     console.log(data.length);
 
