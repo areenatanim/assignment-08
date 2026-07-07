@@ -1,11 +1,11 @@
 import Card from "@/components/Card/Card";
 import CommonBanner from "@/components/shared/Banner/CommonBanner";
-
+import animals from "@/public/data.json";
 
 
 
 const AllAnimalsPage = async () => {
-    const rest = await fetch("https://assignment-08-brown-theta.vercel.app/data.json");
+    const rest = await fetch(animals);
     const data = await rest.json();
     // console.log(data);
 

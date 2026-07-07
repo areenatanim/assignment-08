@@ -1,6 +1,6 @@
-
+import animals from "@/public/qurbani.json";
 const Card = async () => {
-    const rest = await fetch("https://assignment-08-brown-theta.vercel.app/qurbani.json");
+    const rest = await fetch(animals);
     const data = await rest.json();
     const qurbani_tips = data.qurbani_tips;
     const top_breeds = data.top_breeds;

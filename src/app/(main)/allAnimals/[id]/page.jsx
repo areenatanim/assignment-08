@@ -2,11 +2,12 @@
 import Form from '@/components/shared/Form';
 import 'animate.css';
 import Image from "next/image";
+import allAnimals from "@/public/data.json";
 
 
 const AnimalsDetails = async ({ params }) => {
     const { id } = await params;
-    const rest = await fetch("https://assignment-08-brown-theta.vercel.app/data.json");
+    const rest = await fetch(allAnimals);
     const data = await rest.json();
 
     const animals = data.find((animal) => animal.id === Number(id));
