@@ -6,13 +6,29 @@ import Link from "next/link";
 
 const LoginPage = () => {
 
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const userData = Object.fromEntries(formData.entries());
+        console.log("submit data", userData);
+
+        const { data, error } = await authClient.signIn.email({
+            email: userData.email,
+            password: userData.password,
+            rememberMe: true,
+            callbackURL: "/dashbored",
+
+        });
+        console.log("submit ", { data, error });
+    }
+
 
     return (
         <div className="w-3xl my-8 mx-auto border-[#315648] rounded-2xl bg-[#86EFAC] flex flex-col justify-center items-center">
             <h2 className="font-bold text-2xl text-[#315648] my-2.5">Please Register </h2>
 
 
-            <form >
+            <form onSubmit={onSubmit}>
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 shadow-xl my-10">
 
                     {/* name */}
