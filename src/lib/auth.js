@@ -7,9 +7,20 @@ const db = client.db("assignment-08");
 
 export const auth = betterAuth({
 
+    secret: process.env.BETTER_AUTH_SECRET,
+
+    baseURL: process.env.BETTER_AUTH_URL,
+
     database: mongodbAdapter(MongoClient),
+
+    trustedOrigins: [
+        "http://localhost:3000",
+        "https://assignment-08-brown-theta.vercel.app"
+    ],
+
+    // Optional: Add email/password or social providers here
     emailAndPassword: {
-        enabled: true, // ← must be true for signUp.email() to work
+        enabled: true,
     },
 
     database: mongodbAdapter(db, {
