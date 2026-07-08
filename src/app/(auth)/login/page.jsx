@@ -32,10 +32,18 @@ const LoginPage = () => {
 
                     {/* email */}
                     <label className="label">Email</label>
-                    <input type="email" className="input" placeholder="Email" />
+                    <input
+                        type="email"
+                        name="email"
+                        className="input"
+                        placeholder="Email" />
                     {/* password */}
                     <label className="label">Password</label>
-                    <input type="password" className="input" placeholder="Password" />
+                    <input
+                        type="password"
+                        name="password"
+                        className="input"
+                        placeholder="Password" />
 
                     <input type="submit" value="Login"
                         className={`btn rounded-2xl hover:bg-green-800 hover:text-white`} />

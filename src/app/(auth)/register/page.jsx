@@ -1,6 +1,7 @@
 "use client"
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 
 
@@ -13,15 +14,31 @@ const RegisterPage = () => {
         const userData = Object.fromEntries(formData.entries());
         console.log("submit data", userData);
 
-        const { data, error } = await authClient.signIn.email({
+        const { data, error } = await authClient.signUp.email({
+            name: userData.name,
             email: userData.email,
+            url: userData.url,
             password: userData.password,
             rememberMe: true,
-            callbackURL: "/HomePage",
+            callbackURL: "/",
+
 
         });
+
+        if (userData.error === null && result.data) {
+            toast.success("Login successful! 🎉", {
+                duration: 3000,
+                position: 'top-center',
+            });
+        }
+        else {
+            toast.error("Login failed. Please try again.");
+        }
+
         console.log("submit ", { data, error });
+
     }
+
 
 
     return (
@@ -34,16 +51,32 @@ const RegisterPage = () => {
 
                     {/* name */}
                     <label className="label">name</label>
-                    <input type="text" className="input" placeholder="Your Name" />
+                    <input
+                        type="text"
+                        name="name"
+                        className="input"
+                        placeholder="Your Name" />
                     {/* email */}
                     <label className="label">Email</label>
-                    <input type="email" className="input" placeholder="Email" />
+                    <input
+                        type="email"
+                        name="email"
+                        className="input"
+                        placeholder="Email" />
                     {/* photo url */}
                     <label className="label"> Photo-url(link)</label>
-                    <input type="text" className="input" placeholder=" Photo-url(link)" />
+                    <input
+                        type="text"
+                        name="url"
+                        className="input"
+                        placeholder=" Photo-url(link)" />
                     {/* password */}
                     <label className="label">Password</label>
-                    <input type="password" className="input" placeholder="Password" />
+                    <input
+                        type="password"
+                        name="password"
+                        className="input"
+                        placeholder="Password" />
 
                     <input type="submit" value="Register"
                         className={`btn rounded-2xl hover:bg-green-800 hover:text-white`} />

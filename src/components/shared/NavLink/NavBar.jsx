@@ -4,6 +4,8 @@ import Link from "next/link";
 import cow from "@/assets/cow-icon.png"
 import { useState } from "react";
 import NavLink from "./NavLink";
+import { useSession } from "@/lib/auth-client";
+import icon from "@/assets/cow.png"
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const link = <>
@@ -14,6 +16,13 @@ const NavBar = () => {
             <NavLink href={"/allAnimals"}>All Animals</NavLink>
         </li>
     </>
+    const { data, isPending } = useSession();
+    if (isPending) {
+        return <div>Data loading.....</div>
+    }
+    console.log(data);
+
+    const user = data?.user;
     return (
 
         <div>
@@ -65,14 +74,45 @@ const NavBar = () => {
                     <ul className="hidden items-center gap-4 md:flex">
                         {link}
                     </ul>
-                    <div className="flex gap-2">
-                        <button className="btn bg-green-800 text-white px-3 py-2 rounded-xl hover:bg-green-700">
-                            <Link href={"/login"}>login</Link>
-                        </button>
-                        <button className="btn bg-green-800 text-white px-3 py-2 rounded-xl hover:bg-green-700">
-                            <Link href={"/register"}>Register</Link>
-                        </button>
-                    </div>
+
+
+                    {
+                        user ? <>
+                            <div className="flex gap-1.5 items-center">
+                                <p>welcome {user.name}!</p>
+                                <div className="avatar avatar-online">
+                                    <div className="w-24 rounded-full">
+                                        <Image
+                                            src={icon}
+                                            alt="icon"
+                                            width={45}
+                                            height={45}
+                                        ></Image>
+                                    </div>
+                                </div>
+
+                                <button
+                                    className="btn bg-green-800 text-white px-3 py-2 rounded-xl hover:bg-green-700"
+                                    onClick={() => signOut()}>
+                                    LogOut
+                                </button>
+                            </div>
+                        </> :
+                            <>
+                                <div className="flex gap-2">
+                                    <button className="btn bg-green-800 text-white px-3 py-2 rounded-xl hover:bg-green-700">
+                                        <Link href={"/login"}>login</Link>
+                                    </button>
+                                    <button className="btn bg-green-800 text-white px-3 py-2 rounded-xl hover:bg-green-700">
+                                        <Link href={"/register"}>Register</Link>
+                                    </button>
+                                </div>
+                            </>
+                    }
+
+
+
+
                 </header>
                 {isMenuOpen && (
                     <div className="border-t border-separator md:hidden">
