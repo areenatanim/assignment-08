@@ -19,6 +19,17 @@ const LoginPage = () => {
             callbackURL: "/HomePage",
 
         });
+
+        if (userData.error === null && result.data) {
+            toast.success("Login successful! 🎉", {
+                duration: 3000,
+                position: 'top-center',
+            });
+        }
+        else {
+            toast.error("Login failed. Please try again.");
+        }
+
         console.log("submit ", { data, error });
     }
 

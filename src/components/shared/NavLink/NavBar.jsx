@@ -6,6 +6,8 @@ import { useState } from "react";
 import NavLink from "./NavLink";
 import { useSession } from "@/lib/auth-client";
 import icon from "@/assets/cow.png"
+import { signOut } from "better-auth/api";
+import Loading from "@/app/loading";
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const link = <>
@@ -16,9 +18,10 @@ const NavBar = () => {
             <NavLink href={"/allAnimals"}>All Animals</NavLink>
         </li>
     </>
+
     const { data, isPending } = useSession();
     if (isPending) {
-        return <div>Data loading.....</div>
+        return <Loading />
     }
     console.log(data);
 

@@ -51,6 +51,11 @@
 
 **npm package**
 - Animate.css, 
+- MongoDb
+- Batter Auth
+- react icons
+- Toast
+
 
 
 
