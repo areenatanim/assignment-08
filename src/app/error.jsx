@@ -44,6 +44,12 @@ export default function ErrorPage({
                     >
                         Back to Register
                     </Link>
+                    <Link
+                        href="/"
+                        className="px-8 py-3 bg-gray-900 hover:bg-black text-white font-medium rounded-xl transition-all duration-200"
+                    >
+                        Back to Home
+                    </Link>
                 </div>
 
                 <p className="mt-10 text-sm text-gray-500">

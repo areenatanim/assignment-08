@@ -2,21 +2,22 @@ import ErrorPage from "@/app/error";
 import Card from "@/components/Card/Card";
 import CommonBanner from "@/components/shared/Banner/CommonBanner";
 import animals from "@/data/data.json";
+import { auth } from "@/lib/auth";
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 
 const AllAnimalsPage = async () => {
 
-    const session = await auth.api.getSession({
-        headers: await headers()
-    });
-    console.log("session data ", session);
-    const user = session?.user;
-    if (!user) {
-        redirect("/auth/register");
-        return <ErrorPage></ErrorPage>;
-    }
+    // const session = await auth.api.getSession({
+    //     headers: await headers()
+    // });
+    // console.log("session data ", session);
+    // const user = session?.user;
+    // if (!user) {
+    //     redirect("/auth/register");
+    //     return <ErrorPage></ErrorPage>;
+    // }
 
     const data = await animals;
     // console.log(data);

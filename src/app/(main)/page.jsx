@@ -1,6 +1,6 @@
 import Banner from '@/components/shared/Banner/Banner';
 import Card from '@/components/TipAndBreed/Card';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+// import ErrorPage from '../error';
 const HomePage = async () => {
 
   // const session = await auth.api.getSession({
@@ -18,7 +18,6 @@ const HomePage = async () => {
     <div>
       <Banner></Banner>
       <Card></Card>
-      <SpeedInsights />
     </div>
   );
 };
