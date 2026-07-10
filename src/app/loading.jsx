@@ -11,7 +11,7 @@ export default function Loading() {
 
                 <div className="space-y-2">
                     <h2 className="text-2xl font-semibold text-white">Getting everything ready</h2>
-                    <p className="text-zinc-500">This would not take long</p>
+                    <p className="text-zinc-500">This would not take long ok</p>
                 </div>
             </div>
         </div>
