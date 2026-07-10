@@ -4,10 +4,10 @@ import Link from "next/link";
 import cow from "@/assets/cow-icon.png"
 import { useState } from "react";
 import NavLink from "./NavLink";
-// import { useSession } from "@/lib/auth-client";
+import { useSession } from "@/lib/auth-client";
 import icon from "@/assets/cow.png"
 import { signOut } from "better-auth/api";
-// import Loading from "@/app/loading";
+import Loading from "@/app/loading";
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const link = <>
@@ -19,13 +19,13 @@ const NavBar = () => {
         </li>
     </>
 
-    // const { data, isPending } = useSession();
-    // if (isPending) {
-    //     return <Loading />
-    // }
-    // console.log(data);
+    const { data, isPending } = useSession();
+    if (isPending) {
+        return <Loading />
+    }
+    console.log(data);
 
-    // const user = data?.user;
+    const user = data?.user;
     return (
 
         <div>
@@ -79,7 +79,7 @@ const NavBar = () => {
                     </ul>
 
 
-                    {/* {
+                    {
                         user ? <>
                             <div className="flex gap-1.5 items-center">
                                 <p>welcome {user.name}!</p>
@@ -96,8 +96,9 @@ const NavBar = () => {
 
                                 <button
                                     className="btn bg-green-800 text-white px-3 py-2 rounded-xl hover:bg-green-700"
-                                    onClick={() => signOut()}>
-                                    LogOut
+                                >
+                                    <Link href="/register">LogOut</Link>
+
                                 </button>
                             </div>
                         </> :
@@ -112,17 +113,17 @@ const NavBar = () => {
                                 </div>
                             </>
                     }
- */}
 
 
-                    <div className="flex gap-2">
+
+                    {/* <div className="flex gap-2">
                         <button className="btn bg-green-800 text-white px-3 py-2 rounded-xl hover:bg-green-700">
                             <Link href={"/login"}>login</Link>
                         </button>
                         <button className="btn bg-green-800 text-white px-3 py-2 rounded-xl hover:bg-green-700">
                             <Link href={"/register"}>Register</Link>
                         </button>
-                    </div>
+                    </div> */}
                 </header>
                 {isMenuOpen && (
                     <div className="border-t border-separator md:hidden">

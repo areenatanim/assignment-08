@@ -1,197 +1,98 @@
-"use client";
-
-
-
+"use client"
 import { authClient } from "@/lib/auth-client";
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { toast } from "react-toastify";
+
+
+
 
 const RegisterPage = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        setError,
-    } = useForm();
 
-    const [isShowPassword, setIsShowPassword] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
 
-    const handleRegisterFunc = async (data) => {
-        // Prevent multiple submissions
-        if (isLoading) return;
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const userData = Object.fromEntries(formData.entries());
+        console.log("submit data", userData);
 
-        setIsLoading(true);
+        const { data, error } = await authClient.signUp.email({
+            name: userData.name,
+            email: userData.email,
+            url: userData.url,
+            password: userData.password,
+            rememberMe: true,
 
-        try {
-            const { email, name, photo, password } = data;
 
-            console.log("Attempting signup with:", {
-                email,
-                name,
-                hasPhoto: !!photo,
-                passwordLength: password?.length
+        });
+
+        if (!error) {
+            toast.success("Sign up successful! 🎉", {
+                duration: 3000,
+                position: 'top-center',
             });
 
-            // Validate password length before sending
-            if (password.length < 8) {
-                setError("password", {
-                    type: "manual",
-                    message: "Password must be at least 8 characters"
-                });
-                setIsLoading(false);
-                return;
-            }
-
-            const { data: res, error } = await authClient.signUp.email({
-                name: name.trim(),
-                email: email.trim().toLowerCase(),
-                password: password,
-                image: photo || undefined, // Send undefined if no photo
-                callbackURL: "/",
-            });
-
-            console.log("Response:", res);
-            console.log("Error:", error);
-
-            if (error) {
-                // Handle specific error cases
-                if (error.message?.includes("email")) {
-                    setError("email", {
-                        type: "manual",
-                        message: "This email is already registered or invalid"
-                    });
-                } else {
-                    alert(`Signup failed: ${error.message || "Unknown error"}`);
-                }
-                setIsLoading(false);
-                return;
-            }
-
-            if (res) {
-                alert("Signup successful! Please check your email or login.");
-                // Optionally redirect
-                // window.location.href = "/login";
-            }
-        } catch (error) {
-            console.error("Unexpected error:", error);
-            alert("An unexpected error occurred. Please try again.");
-        } finally {
-            setIsLoading(false);
+            router.push("/");
         }
-    };
+        else {
+            toast.error("Login failed. Please try again.");
+        }
+
+        console.log("submit ", { data, error });
+
+    }
+
+
 
     return (
-        <div className="container mx-auto min-h-[80vh] flex justify-center items-center bg-slate-100 py-28">
-            <div className="p-4 rounded-xl bg-white w-full max-w-md">
-                <h2 className="font-bold text-3xl text-center mb-6">
-                    Register your account
-                </h2>
+        <div className="w-3xl my-8 mx-auto border-[#315648] rounded-2xl bg-[#86EFAC] flex flex-col justify-center items-center">
+            <h2 className="font-bold text-2xl text-[#315648] my-2.5">Please Register </h2>
 
-                <form className="space-y-4" onSubmit={handleSubmit(handleRegisterFunc)}>
-                    {/* Name Field */}
-                    <fieldset className="fieldset">
-                        <legend className="fieldset-legend">Name</legend>
-                        <input
-                            type="text"
-                            className="input w-full"
-                            placeholder="Type here name"
-                            {...register("name", {
-                                required: "Name is required",
-                                minLength: {
-                                    value: 2,
-                                    message: "Name must be at least 2 characters"
-                                }
-                            })}
-                            disabled={isLoading}
-                        />
-                        {errors.name && (
-                            <p className="text-red-500 text-sm">{errors.name.message}</p>
-                        )}
-                    </fieldset>
 
-                    {/* Photo URL Field - Now Optional */}
-                    <fieldset className="fieldset">
-                        <legend className="fieldset-legend">Photo URL (Optional)</legend>
-                        <input
-                            type="url"
-                            className="input w-full"
-                            placeholder="https://example.com/photo.jpg"
-                            {...register("photo", {
-                                // Remove required validation
-                            })}
-                            disabled={isLoading}
-                        />
-                        {errors.photo && (
-                            <p className="text-red-500 text-sm">{errors.photo.message}</p>
-                        )}
-                    </fieldset>
+            <form onSubmit={onSubmit}>
+                <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 shadow-xl my-10">
 
-                    {/* Email Field */}
-                    <fieldset className="fieldset">
-                        <legend className="fieldset-legend">Email</legend>
-                        <input
-                            type="email"
-                            className="input w-full"
-                            placeholder="Type here email"
-                            {...register("email", {
-                                required: "Email is required",
-                                pattern: {
-                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                    message: "Invalid email address"
-                                }
-                            })}
-                            disabled={isLoading}
-                        />
-                        {errors.email && (
-                            <p className="text-red-500 text-sm">{errors.email.message}</p>
-                        )}
-                    </fieldset>
+                    {/* name */}
+                    <label className="label">name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        className="input"
+                        placeholder="Your Name" />
+                    {/* email */}
+                    <label className="label">Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        className="input"
+                        placeholder="Email" />
+                    {/* photo url */}
+                    <label className="label"> Photo-url(link)</label>
+                    <input
+                        type="text"
+                        name="url"
+                        className="input"
+                        placeholder=" Photo-url(link)" />
+                    {/* password */}
+                    <label className="label">Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        className="input"
+                        placeholder="Password" />
 
-                    {/* Password Field */}
-                    <fieldset className="fieldset relative">
-                        <legend className="fieldset-legend">Password</legend>
-                        <input
-                            type={isShowPassword ? "text" : "password"}
-                            className="input w-full pr-10"
-                            placeholder="Type here password (min 8 characters)"
-                            {...register("password", {
-                                required: "Password is required",
-                                minLength: {
-                                    value: 8,
-                                    message: "Password must be at least 8 characters"
-                                }
-                            })}
-                            disabled={isLoading}
-                        />
-                        <span
-                            className="absolute right-3 top-4 cursor-pointer"
-                            onClick={() => setIsShowPassword(!isShowPassword)}
-                        >
-                            {isShowPassword ? <FaEye /> : <FaEyeSlash />}
-                        </span>
-                        {errors.password && (
-                            <p className="text-red-500 text-sm">{errors.password.message}</p>
-                        )}
-                    </fieldset>
-
-                    <button
-                        type="submit"
-                        className="btn w-full bg-slate-800 text-white hover:bg-slate-700"
-                        disabled={isLoading}
-                    >
-                        {isLoading ? (
-                            <>
-                                <span className="loading loading-spinner"></span>
-                                Registering...
-                            </>
-                        ) : (
-                            "Register"
-                        )}
+                    <input type="submit" value="Register"
+                        className={`btn rounded-2xl hover:bg-green-800 hover:text-white`} />
+                    {/* Google */}
+                    <button className="btn bg-white text-black border-[#e5e5e5]">
+                        <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
+                        Login with Google
                     </button>
-                </form>
-            </div>
+                    <p className="text-gray-400">If your  have an account then
+                        <Link href={"/login"} className="text-blue-400 "> Login </Link></p>
+                </fieldset>
+            </form>
         </div>
     );
 };

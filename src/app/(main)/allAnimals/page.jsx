@@ -9,15 +9,15 @@ import { redirect } from 'next/navigation';
 
 const AllAnimalsPage = async () => {
 
-    // const session = await auth.api.getSession({
-    //     headers: await headers()
-    // });
-    // console.log("session data ", session);
-    // const user = session?.user;
-    // if (!user) {
-    //     redirect("/auth/register");
-    //     return <ErrorPage></ErrorPage>;
-    // }
+    const session = await auth.api.getSession({
+        headers: await headers()
+    });
+    console.log("session data ", session);
+    const user = session?.user;
+    if (!user) {
+        redirect("/auth/register");
+        return <ErrorPage></ErrorPage>;
+    }
 
     const data = await animals;
     // console.log(data);
